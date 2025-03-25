@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agri Price Prediction</title>
+    <style>
+        /* Dark Mode Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #121212;
+            color: #ddd;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #4caf50;
+        }
+
+        form {
+            margin: 20px auto;
+            width: 300px;
+            padding: 20px;
+            background: #1e1e1e;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        input, select, button {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background: #333;
+            color: #ddd;
+        }
+
+        button {
+            background: #4caf50;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 22px;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        #new-prediction {
+            margin-top: 10px;
+            background: #ff5722;
+        }
+
+        #new-prediction:hover {
+            background: #e64a19;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌟 Agri-Horticultural Price Prediction 🌟</h1>
+    <form action="/predict" method="post">
+        <label for="temperature">🌡️ Temperature (°C):</label>
+        <input type="number" name="temperature" required>
+
+        <label for="rainfall">☔ Rainfall (mm):</label>
+        <input type="number" name="rainfall" required>
+
+        <label for="commodity">🌾 Select Commodity:</label>
+        <select name="commodity">
+            <option value="Onion">🧅 Onion</option>
+            <option value="Potato">🥔 Potato</option>
+            <option value="Pulses">🌱 Pulses</option>
+        </select>
+
+        <button type="submit">🚀 Predict Price</button>
+    </form>
+
+    {% if price %}
+    <div id="result">
+        💰 Predicted Price: ₹{{ price }}
+        <p>📌 Commodity: {{ commodity }} | 🌡️ Temperature: {{ temperature }}°C | ☔ Rainfall: {{ rainfall }} mm</p>
+        <form action="/" method="get">
+            <button id="new-prediction">🔄 New Prediction</button>
+        </form>
+    </div>
+    {% endif %}
+</body>
+</html>
